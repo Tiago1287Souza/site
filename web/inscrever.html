@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Increver-se</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+            function criarJSON() {
+                fetch('http://localhotst/webService/Login/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'aplication/json'
+
+                    
+                },
+                body: JSON.stringify(dados)
+                }).then(response => response.json())
+                        .then(data => {
+                            console.log(data);
+                }).catch (error=> {
+                    console.log(error);
+                });
+
+                const email = document.getElementById('email').value;
+                const senha = document.getElementById('senha').value;
+
+                const dados = {
+                    email: email,
+                    senha: senha
+                };
+
+                const json = JSON.stringify(dados);
+
+                console.log(json.toString());
+
+            }
+        </script>
+
+    </head>
+
+
+    <body>
+
+        <header>
+            <h1>Login</h1>
+        </header>
+
+        <main>
+            <form>
+                <div>
+                    <label for="email"> E-Mail:</label>
+                    <input type ="text" id ="email">
+                </div>
+
+                <div>
+                    <label for="email"> Senha:</label>
+                    <input type ="password" id ="senha">
+                </div>
+
+                <button type="button" onclick="criarJSON">Entrar</button>
+
+            </form>
+
+        </main>
+    </body>
+</html>
